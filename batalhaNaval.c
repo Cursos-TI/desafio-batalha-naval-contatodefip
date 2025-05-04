@@ -2,9 +2,22 @@
 int main(){
 
     /*
-Jogo de batalha naval - Nível Aventureiro
+Jogo de batalha naval - Nível Mestre
 Desenvolvido por Anderson Ferreira
 */
+
+// DEFINIÇÃO DAS MATRIZES DE HABILIDADE E RELACIONADOS
+
+int cone[5][5] = {0}; // Matriz Cone
+int cruz[5][5]; // Matriz Cruz
+int tamanhoCruz = 5; // Limite do tamanho para a cruz
+int centroCruz = tamanhoCruz / 2; // Definição do centro para a cruz
+int octaedro[5][5]; // Matriz Octaedro
+int tamanhoOctaedro = 5; // Limite do tamanho para Octaedro
+int centroOctaedro = tamanhoOctaedro /2; // Limite do centro para Octaedro
+int raioOctaedro = 2; // Raio para Octaedro
+
+// DEFINIÇÃO DAS POSIÇÕES DOS NAVIOS
 
 int navioLinha1 = 3, navioColuna1 = 0; // Posições do navio 1 na Horizontal
 int navioLinha2 = 5, navioColuna2 = 6; // Posições do navio 2 na Vertical
@@ -20,7 +33,75 @@ for (int i = 0; i < 10; i++){
     }
 }
 printf("******* JOGO BATALHA NAVAL *******\n\n");
-printf("Mar sem navios\n");
+printf("******* HABILIDADES EM MATRIZES 5 X 5 *******");
+
+// Prenchendo a matriz cone 5 x 5
+for(int i = 0; i < 3; i++){
+    for (int j = 0; j < 5; j++){
+        if(j >= 2 - i && j <= 2 + i){
+            cone[i][j] = 1;
+        }
+    }
+    
+}
+
+// Printando a Matriz cone 5 x 5
+printf("\n\n******* MATRIZ DE HABILIDADE EM CONE *******\n");
+for(int i = 0; i < 5; i++){
+    for (int j = 0; j < 5; j++){
+            printf("%d ", cone[i][j]);
+    }
+    printf("\n");
+}
+printf("\n\n");
+    
+// Prenchendo a matriz cruz 5 x 5
+for (int i = 0; i < tamanhoCruz; i++) {
+    for (int j = 0; j < tamanhoCruz; j++) {
+        if (i == centroCruz || j == centroCruz) {
+            cruz[i][j] = 1;
+        } else {
+            cruz[i][j] = 0;
+        }
+    }
+}
+
+// Printando matriz cruz
+printf("******* MATRIZ DE HABILIDADE EM CRUZ *******\n");
+for (int i = 0; i < tamanhoCruz; i++) {
+    for (int j = 0; j < tamanhoCruz; j++) {
+        printf("%d ", cruz[i][j]);
+    }
+    printf("\n");
+}
+printf("\n\n");
+
+// Prenchendo a matriz octaedro 5 x 5
+for (int i = 0; i < tamanhoOctaedro; i++) {
+for (int j = 0; j < tamanhoOctaedro; j++) {
+    int dist = (i > centroOctaedro ? i - centroOctaedro : centroOctaedro - i) + 
+               (j > centroOctaedro ? j - centroOctaedro : centroOctaedro - j);
+    if (dist <= raioOctaedro) {
+        octaedro[i][j] = 1;
+    } else {
+        octaedro[i][j] = 0;
+    }
+}
+}
+
+// Printando a matriz octaedro 5 x 5
+printf("******* MATRIZ DE HABILIDADE OCTAEDRO *******\n");
+for (int i = 0; i < tamanhoOctaedro; i++) {
+    for (int j = 0; j < tamanhoOctaedro; j++) {
+        printf("%d ", octaedro[i][j]);
+    }
+    printf("\n");
+}
+printf("\n\n");
+
+// SEQUÊNCIA DOS NAVIOS
+
+printf("MAR SEM NAVIOS\n");
 for(int i = 0; i < 10; i++){
     for(int j = 0; j < 10; j++){
         printf("%d ", m[i][j]);
